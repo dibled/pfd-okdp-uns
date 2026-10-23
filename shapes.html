@@ -18,14 +18,14 @@ th { background: var(--doux); position: sticky; top: 0; }
 </head>
 <body>
 <h1>Contrôles SHACL du vocabulaire UNS (cas DECP)</h1>
-<p>Version 0.1.0. Formats : <a href="uns_decp_shacl.ttl">Turtle</a>, <a href="uns_decp_shacl.jsonld">JSON-LD</a>, <a href="uns_decp_shacl.rdf">RDF/XML</a>. <a href="./">Accueil</a>.</p>
+<p>Version 0.2.0. Formats : <a href="uns_decp_shacl.ttl">Turtle</a>, <a href="uns_decp_shacl.jsonld">JSON-LD</a>, <a href="uns_decp_shacl.rdf">RDF/XML</a>. <a href="./">Accueil</a>.</p>
 <h2>MarcheForme</h2>
 <p>Classe ciblée : <code>https://w3id.org/pfd-okdp/uns/def#Marche</code></p>
 <table><thead><tr><th>Propriété</th><th>Contrainte</th><th>Message</th></tr></thead><tbody>
 <tr><td><code>marche.montant</code></td><td>minExclusive = 0</td><td>MAR-001 : montant inférieur ou égal à 0</td></tr>
 <tr><td><code>marche.dureeMois</code></td><td>minExclusive = 0</td><td>MAR-002 : durée inférieure ou égale à 0</td></tr>
-<tr><td><code>marche.codeCPV</code></td><td>minCount = 1; pattern = ^[0-9]{8}-[0-9]$</td><td>MAR-004 : code CPV hors format 8 chiffres-clé</td></tr>
-<tr><td><code>entite.identifiant.SIRET</code></td><td>minCount = 1; pattern = ^[0-9]{14}$</td><td>MAR-005 : SIRET acheteur hors format 14 chiffres</td></tr>
+<tr><td><code>marche.codeCPV</code></td><td>pattern = ^[0-9]{8}-[0-9]$; minCount = 1</td><td>MAR-004 : code CPV hors format 8 chiffres-clé</td></tr>
+<tr><td><code>entite.identifiant.SIRET</code></td><td>pattern = ^[0-9]{14}$; minCount = 1</td><td>MAR-005 : SIRET acheteur hors format 14 chiffres</td></tr>
 <tr><td>requête SPARQL</td><td><pre>PREFIX uns: &lt;https://w3id.org/pfd-okdp/uns/def#&gt;
 PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 SELECT $this WHERE { $this uns:marche.datePublicationDonnees ?p ; uns:marche.dateNotification ?n .
