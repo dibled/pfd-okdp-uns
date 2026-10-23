@@ -5,18 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vocabulaire UNS PFD-OKDP</title>
 <style>
-  body { font-family: system-ui, sans-serif; max-width: 46rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
-  code { background: #f2f2f2; padding: 0 .25rem; }
+:root { --fond: #fff; --texte: #1d1d1f; --trait: #d8d8dc; --doux: #f4f4f6; --lien: #0b57d0; }
+@media (prefers-color-scheme: dark) { :root { --fond: #17171a; --texte: #ececf1; --trait: #3a3a40; --doux: #222227; --lien: #8ab4f8; } }
+body { background: var(--fond); color: var(--texte); font-family: system-ui, sans-serif; line-height: 1.5;
+       max-width: 52rem; margin: 2rem auto; padding: 0 1rem; }
+a { color: var(--lien); } code { background: var(--doux); padding: 0 .25rem; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border-bottom: 1px solid var(--trait); padding: .4rem .5rem; text-align: left; vertical-align: top; }
+th { background: var(--doux); }
 </style>
 </head>
 <body>
 <h1>Vocabulaire UNS de la plateforme PFD-OKDP</h1>
-<p>Identifiants persistants servis par <a href="https://w3id.org/pfd-okdp/">w3id.org/pfd-okdp</a>.</p>
-<ul>
-  <li><code>https://w3id.org/pfd-okdp/uns/def#</code> : ontologie et vocabulaire (OWL / SKOS) &mdash; <a href="uns_ontologie.ttl">uns_ontologie.ttl</a></li>
-  <li><code>https://w3id.org/pfd-okdp/uns/ref/</code> : référentiels SKOS (dont CPV 2008) &mdash; <a href="uns_referentiels.ttl">uns_referentiels.ttl</a></li>
-  <li>Formes de contrôle SHACL (cas DECP) &mdash; <a href="uns_decp_shacl.ttl">uns_decp_shacl.ttl</a></li>
-</ul>
-<p>Contact : Didier Bombled (<a href="https://github.com/dibled">@dibled</a>).</p>
+<p>Version 0.1.0 (24/10/2026). Identifiants persistants servis par <a href="https://w3id.org/pfd-okdp/">w3id.org/pfd-okdp</a>.
+Préfixe recommandé : <code>uns:</code> = <code>https://w3id.org/pfd-okdp/uns/def#</code>.</p>
+
+<table>
+<thead><tr><th>Contenu</th><th>Identifiant</th><th>Documentation</th><th>Formats</th></tr></thead>
+<tbody>
+<tr><td>Ontologie et vocabulaire (OWL)</td><td><code>https://w3id.org/pfd-okdp/uns/def</code></td>
+  <td><a href="def.html">def.html</a></td>
+  <td><a href="uns_ontologie.ttl">Turtle</a> · <a href="uns_ontologie.jsonld">JSON-LD</a> · <a href="uns_ontologie.rdf">RDF/XML</a></td></tr>
+<tr><td>Référentiels (SKOS, dont CPV 2008)</td><td><code>https://w3id.org/pfd-okdp/uns/ref/</code></td>
+  <td><a href="ref.html">ref.html</a></td>
+  <td><a href="uns_referentiels.ttl">Turtle</a> · <a href="uns_referentiels.jsonld">JSON-LD</a> · <a href="uns_referentiels.rdf">RDF/XML</a></td></tr>
+<tr><td>Contrôles SHACL (cas DECP)</td><td><code>https://w3id.org/pfd-okdp/uns/shapes</code></td>
+  <td><a href="shapes.html">shapes.html</a></td>
+  <td><a href="uns_decp_shacl.ttl">Turtle</a> · <a href="uns_decp_shacl.jsonld">JSON-LD</a> · <a href="uns_decp_shacl.rdf">RDF/XML</a></td></tr>
+</tbody>
+</table>
+
+<h2>Versions</h2>
+<ul><li><a href="versions/0.1.0/def.html">0.1.0</a> (<code>https://w3id.org/pfd-okdp/uns/def/0.1.0</code>)</li></ul>
+
+<h2>Licence</h2>
+<p>Vocabulaire UNS : <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence/">Licence Ouverte / Open Licence 2.0 (Etalab)</a>.
+Nomenclature CPV : Office des publications de l'Union européenne, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+
+<p>Contact : Didier Bombled (<a href="https://github.com/dibled">@dibled</a>). Sources : <a href="https://github.com/dibled/pfd-okdp-uns">github.com/dibled/pfd-okdp-uns</a>.</p>
 </body>
 </html>

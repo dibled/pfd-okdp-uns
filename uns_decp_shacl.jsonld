@@ -1,0 +1,152 @@
+{
+  "@context": {
+    "brick": "https://brickschema.org/schema/Brick#",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "uns": "https://w3id.org/pfd-okdp/uns/def#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "uns:MarcheForme",
+      "@type": "sh:NodeShape",
+      "sh:property": [
+        {
+          "@id": "_:n9469ba77459b4cf2a34d89a1baa86834b1"
+        },
+        {
+          "@id": "_:n9469ba77459b4cf2a34d89a1baa86834b2"
+        },
+        {
+          "@id": "_:n9469ba77459b4cf2a34d89a1baa86834b3"
+        },
+        {
+          "@id": "_:n9469ba77459b4cf2a34d89a1baa86834b4"
+        }
+      ],
+      "sh:sparql": [
+        {
+          "@id": "_:n9469ba77459b4cf2a34d89a1baa86834b5"
+        },
+        {
+          "@id": "_:n9469ba77459b4cf2a34d89a1baa86834b6"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "uns:Marche"
+      }
+    },
+    {
+      "@id": "_:n9469ba77459b4cf2a34d89a1baa86834b1",
+      "sh:message": {
+        "@language": "fr",
+        "@value": "MAR-001 : montant inférieur ou égal à 0"
+      },
+      "sh:minExclusive": 0,
+      "sh:path": {
+        "@id": "uns:marche.montant"
+      }
+    },
+    {
+      "@id": "_:n9469ba77459b4cf2a34d89a1baa86834b2",
+      "sh:message": {
+        "@language": "fr",
+        "@value": "MAR-002 : durée inférieure ou égale à 0"
+      },
+      "sh:minExclusive": 0,
+      "sh:path": {
+        "@id": "uns:marche.dureeMois"
+      }
+    },
+    {
+      "@id": "_:n9469ba77459b4cf2a34d89a1baa86834b3",
+      "sh:message": {
+        "@language": "fr",
+        "@value": "MAR-004 : code CPV hors format 8 chiffres-clé"
+      },
+      "sh:minCount": 1,
+      "sh:path": {
+        "@id": "uns:marche.codeCPV"
+      },
+      "sh:pattern": "^[0-9]{8}-[0-9]$"
+    },
+    {
+      "@id": "_:n9469ba77459b4cf2a34d89a1baa86834b4",
+      "sh:message": {
+        "@language": "fr",
+        "@value": "MAR-005 : SIRET acheteur hors format 14 chiffres"
+      },
+      "sh:minCount": 1,
+      "sh:path": {
+        "@id": "uns:entite.identifiant.SIRET"
+      },
+      "sh:pattern": "^[0-9]{14}$"
+    },
+    {
+      "@id": "_:n9469ba77459b4cf2a34d89a1baa86834b5",
+      "sh:message": {
+        "@language": "fr",
+        "@value": "MAR-003 : publication antérieure à la notification"
+      },
+      "sh:select": "PREFIX uns: <https://w3id.org/pfd-okdp/uns/def#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT $this WHERE { $this uns:marche.datePublicationDonnees ?p ; uns:marche.dateNotification ?n .\n                   FILTER (STR(?p) < STR(?n)) }  # dates AAAA-MM-JJ : ordre des textes = ordre des dates"
+    },
+    {
+      "@id": "_:n9469ba77459b4cf2a34d89a1baa86834b6",
+      "sh:message": {
+        "@language": "fr",
+        "@value": "MAR-006 : avance attribuée sans taux positif"
+      },
+      "sh:select": "PREFIX uns: <https://w3id.org/pfd-okdp/uns/def#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT $this WHERE { $this uns:marche.attributionAvance \"1\" .\n                   OPTIONAL { $this uns:marche.tauxAvance ?t } FILTER (!BOUND(?t) || ?t <= 0) }"
+    },
+    {
+      "@id": "https://w3id.org/pfd-okdp/uns/shapes",
+      "@type": "owl:Ontology",
+      "dct:created": {
+        "@type": "xsd:date",
+        "@value": "2026-10-23"
+      },
+      "dct:creator": "Didier Bombled",
+      "dct:language": "fr",
+      "dct:license": {
+        "@id": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/"
+      },
+      "dct:modified": {
+        "@type": "xsd:date",
+        "@value": "2026-10-24"
+      },
+      "dct:publisher": "Plateforme PFD-OKDP",
+      "owl:imports": {
+        "@id": "https://w3id.org/pfd-okdp/uns/def"
+      },
+      "owl:versionInfo": "0.1.0",
+      "rdfs:label": {
+        "@language": "fr",
+        "@value": "Contrôles SHACL du vocabulaire UNS (cas DECP)"
+      }
+    }
+  ]
+}
