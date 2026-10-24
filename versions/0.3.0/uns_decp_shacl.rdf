@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dct="http://purl.org/dc/terms/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:sh="http://www.w3.org/ns/shacl#"
+>
+  <rdf:Description rdf:nodeID="n7e082a8d039a4627a85374c90d8d9d54b1">
+    <sh:path rdf:resource="https://w3id.org/pfd-okdp/uns/def#marche.montant"/>
+    <sh:minExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minExclusive>
+    <sh:message xml:lang="fr">MAR-001 : montant inférieur ou égal à 0</sh:message>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7e082a8d039a4627a85374c90d8d9d54b5">
+    <sh:message xml:lang="fr">MAR-003 : publication antérieure à la notification</sh:message>
+    <sh:select>PREFIX uns: &lt;https://w3id.org/pfd-okdp/uns/def#&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+SELECT $this WHERE { $this uns:marche.datePublicationDonnees ?p ; uns:marche.dateNotification ?n .
+                   FILTER (STR(?p) &lt; STR(?n)) }  # dates AAAA-MM-JJ : ordre des textes = ordre des dates</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7e082a8d039a4627a85374c90d8d9d54b3">
+    <sh:path rdf:resource="https://w3id.org/pfd-okdp/uns/def#marche.codeCPV"/>
+    <sh:pattern>^[0-9]{8}-[0-9]$</sh:pattern>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:message xml:lang="fr">MAR-004 : code CPV hors format 8 chiffres-clé</sh:message>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7e082a8d039a4627a85374c90d8d9d54b2">
+    <sh:path rdf:resource="https://w3id.org/pfd-okdp/uns/def#marche.dureeMois"/>
+    <sh:minExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minExclusive>
+    <sh:message xml:lang="fr">MAR-002 : durée inférieure ou égale à 0</sh:message>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/pfd-okdp/uns/shapes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="fr">Contrôles SHACL du vocabulaire UNS (cas DECP)</rdfs:label>
+    <owl:versionInfo>0.3.0</owl:versionInfo>
+    <owl:imports rdf:resource="https://w3id.org/pfd-okdp/uns/def"/>
+    <dct:creator>Didier Bombled</dct:creator>
+    <dct:publisher>Plateforme PFD-OKDP</dct:publisher>
+    <dct:license rdf:resource="https://www.etalab.gouv.fr/licence-ouverte-open-licence/"/>
+    <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-23</dct:created>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-24</dct:modified>
+    <dct:language>fr</dct:language>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7e082a8d039a4627a85374c90d8d9d54b4">
+    <sh:path rdf:resource="https://w3id.org/pfd-okdp/uns/def#entite.identifiant.SIRET"/>
+    <sh:pattern>^[0-9]{14}$</sh:pattern>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:message xml:lang="fr">MAR-005 : SIRET acheteur hors format 14 chiffres</sh:message>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/pfd-okdp/uns/def#MarcheForme">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="https://w3id.org/pfd-okdp/uns/def#Marche"/>
+    <sh:property rdf:nodeID="n7e082a8d039a4627a85374c90d8d9d54b1"/>
+    <sh:property rdf:nodeID="n7e082a8d039a4627a85374c90d8d9d54b2"/>
+    <sh:property rdf:nodeID="n7e082a8d039a4627a85374c90d8d9d54b3"/>
+    <sh:property rdf:nodeID="n7e082a8d039a4627a85374c90d8d9d54b4"/>
+    <sh:sparql rdf:nodeID="n7e082a8d039a4627a85374c90d8d9d54b5"/>
+    <sh:sparql rdf:nodeID="n7e082a8d039a4627a85374c90d8d9d54b6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7e082a8d039a4627a85374c90d8d9d54b6">
+    <sh:message xml:lang="fr">MAR-006 : avance attribuée sans taux positif</sh:message>
+    <sh:select>PREFIX uns: &lt;https://w3id.org/pfd-okdp/uns/def#&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+SELECT $this WHERE { $this uns:marche.attributionAvance "1" .
+                   OPTIONAL { $this uns:marche.tauxAvance ?t } FILTER (!BOUND(?t) || ?t &lt;= 0) }</sh:select>
+  </rdf:Description>
+</rdf:RDF>

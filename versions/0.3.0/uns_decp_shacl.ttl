@@ -1,0 +1,32 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+<https://w3id.org/pfd-okdp/uns/shapes> rdf:type owl:Ontology ;
+    rdfs:label "Contrôles SHACL du vocabulaire UNS (cas DECP)"@fr ;
+    owl:versionInfo "0.3.0" ;
+    owl:imports <https://w3id.org/pfd-okdp/uns/def> ;
+    dct:creator "Didier Bombled" ;
+    dct:publisher "Plateforme PFD-OKDP" ;
+    dct:license <https://www.etalab.gouv.fr/licence-ouverte-open-licence/> ;
+    dct:created "2026-10-23"^^xsd:date ;
+    dct:modified "2026-10-24"^^xsd:date ;
+    dct:language "fr" .
+
+<https://w3id.org/pfd-okdp/uns/def#MarcheForme> rdf:type sh:NodeShape ;
+    sh:targetClass <https://w3id.org/pfd-okdp/uns/def#Marche> ;
+    sh:property [ sh:path <https://w3id.org/pfd-okdp/uns/def#marche.montant> ; sh:minExclusive 0 ; sh:message "MAR-001 : montant inférieur ou égal à 0"@fr ] ;
+    sh:property [ sh:path <https://w3id.org/pfd-okdp/uns/def#marche.dureeMois> ; sh:minExclusive 0 ; sh:message "MAR-002 : durée inférieure ou égale à 0"@fr ] ;
+    sh:property [ sh:path <https://w3id.org/pfd-okdp/uns/def#marche.codeCPV> ; sh:pattern "^[0-9]{8}-[0-9]$" ; sh:minCount 1 ; sh:message "MAR-004 : code CPV hors format 8 chiffres-clé"@fr ] ;
+    sh:property [ sh:path <https://w3id.org/pfd-okdp/uns/def#entite.identifiant.SIRET> ; sh:pattern "^[0-9]{14}$" ; sh:minCount 1 ; sh:message "MAR-005 : SIRET acheteur hors format 14 chiffres"@fr ] ;
+    sh:sparql [ sh:message "MAR-003 : publication antérieure à la notification"@fr ; sh:select """PREFIX uns: <https://w3id.org/pfd-okdp/uns/def#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT $this WHERE { $this uns:marche.datePublicationDonnees ?p ; uns:marche.dateNotification ?n .
+                   FILTER (STR(?p) < STR(?n)) }  # dates AAAA-MM-JJ : ordre des textes = ordre des dates""" ] ;
+    sh:sparql [ sh:message "MAR-006 : avance attribuée sans taux positif"@fr ; sh:select """PREFIX uns: <https://w3id.org/pfd-okdp/uns/def#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT $this WHERE { $this uns:marche.attributionAvance \"1\" .
+                   OPTIONAL { $this uns:marche.tauxAvance ?t } FILTER (!BOUND(?t) || ?t <= 0) }""" ] .

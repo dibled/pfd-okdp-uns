@@ -9,15 +9,15 @@
     rdfs:label "Vocabulaire UNS de la plateforme PFD-OKDP"@fr ;
     dct:title "Vocabulaire UNS de la plateforme PFD-OKDP"@fr ;
     dct:description "Généré depuis opale-meta.uns_vocabulaire et uns_dictionnaire ; espace d URI https://w3id.org/pfd-okdp/uns/ (identifiants permanents w3id)."@fr ;
-    owl:versionInfo "0.2.0" ;
-    owl:versionIRI <https://w3id.org/pfd-okdp/uns/def/0.2.0> ;
+    owl:versionInfo "0.3.0" ;
+    owl:versionIRI <https://w3id.org/pfd-okdp/uns/def/0.3.0> ;
     vann:preferredNamespacePrefix "uns" ;
     vann:preferredNamespaceUri "https://w3id.org/pfd-okdp/uns/def#" ;
     dct:creator "Didier Bombled" ;
     dct:publisher "Plateforme PFD-OKDP" ;
     dct:license <https://www.etalab.gouv.fr/licence-ouverte-open-licence/> ;
     dct:created "2026-10-23"^^xsd:date ;
-    dct:modified "2026-10-23"^^xsd:date ;
+    dct:modified "2026-10-24"^^xsd:date ;
     dct:language "fr" .
 
 <https://w3id.org/pfd-okdp/uns/def#statut> rdf:type owl:AnnotationProperty .
@@ -232,6 +232,264 @@
 
 <https://w3id.org/pfd-okdp/uns/def#Nomenclature> rdf:type owl:Class ;
     rdfs:label "nomenclature"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#banque.coordonneesBancaires> rdf:type owl:ObjectProperty ;
+    rdfs:label "banque.coordonneesBancaires" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Banque> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#CoordonneesBancaires> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#coordonnees-bancaires.tiers> rdf:type owl:ObjectProperty ;
+    rdfs:label "coordonnees-bancaires.tiers" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#CoordonneesBancaires> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Tiers> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#degrevement.impot> rdf:type owl:ObjectProperty ;
+    rdfs:label "degrevement.impot" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Degrevement> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Impot> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#degrevement.roleImposition> rdf:type owl:ObjectProperty ;
+    rdfs:label "degrevement.roleImposition" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Degrevement> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#RoleImposition> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#document.acte> rdf:type owl:ObjectProperty ;
+    rdfs:label "document.acte" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Document> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Acte> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#document.bordereau> rdf:type owl:ObjectProperty ;
+    rdfs:label "document.bordereau" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Document> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Bordereau> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr ;
+    rdfs:comment "Bordereau de dépense ou de recette transmis par le flux PES."@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#document.lieu> rdf:type owl:ObjectProperty ;
+    rdfs:label "document.lieu" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Document> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Lieu> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#document.lignePiece> rdf:type owl:ObjectProperty ;
+    rdfs:label "document.lignePiece" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Document> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#LignePiece> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr ;
+    rdfs:comment "Ligne de pièce (ligne de mandat ou de titre) transmise par le flux PES."@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#document.organisation> rdf:type owl:ObjectProperty ;
+    rdfs:label "document.organisation" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Document> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Organisation> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#document.paierie> rdf:type owl:ObjectProperty ;
+    rdfs:label "document.paierie" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Document> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Paierie> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#document.personne> rdf:type owl:ObjectProperty ;
+    rdfs:label "document.personne" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Document> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Personne> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#document.pieceComptable> rdf:type owl:ObjectProperty ;
+    rdfs:label "document.pieceComptable" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Document> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#PieceComptable> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr ;
+    rdfs:comment "Pièce comptable (mandat ou titre) transmise par le flux PES."@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#document.prescription> rdf:type owl:ObjectProperty ;
+    rdfs:label "document.prescription" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Document> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Prescription> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#document.rencontre> rdf:type owl:ObjectProperty ;
+    rdfs:label "document.rencontre" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Document> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Rencontre> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#entreprise.coordonneesBancaires> rdf:type owl:ObjectProperty ;
+    rdfs:label "entreprise.coordonneesBancaires" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Entreprise> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#CoordonneesBancaires> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#entreprise.personne> rdf:type owl:ObjectProperty ;
+    rdfs:label "entreprise.personne" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Entreprise> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Personne> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#entreprise.tiers> rdf:type owl:ObjectProperty ;
+    rdfs:label "entreprise.tiers" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Entreprise> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Tiers> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#envoi.acteur> rdf:type owl:ObjectProperty ;
+    rdfs:label "envoi.acteur" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Envoi> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Acteur> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#envoi.document> rdf:type owl:ObjectProperty ;
+    rdfs:label "envoi.document" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Envoi> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Document> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#envoi.marchandise> rdf:type owl:ObjectProperty ;
+    rdfs:label "envoi.marchandise" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Envoi> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Marchandise> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#envoi.uniteChargement> rdf:type owl:ObjectProperty ;
+    rdfs:label "envoi.uniteChargement" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Envoi> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#UniteChargement> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#envoi.voyage> rdf:type owl:ObjectProperty ;
+    rdfs:label "envoi.voyage" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Envoi> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Voyage> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#etablissement.entreprise> rdf:type owl:ObjectProperty ;
+    rdfs:label "etablissement.entreprise" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Etablissement> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Entreprise> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr ;
+    rdfs:comment "Entreprise (unité légale) à laquelle appartient l'établissement."@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#etablissement.tiers> rdf:type owl:ObjectProperty ;
+    rdfs:label "etablissement.tiers" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Etablissement> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Tiers> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#guichet.coordonneesBancaires> rdf:type owl:ObjectProperty ;
+    rdfs:label "guichet.coordonneesBancaires" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Guichet> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#CoordonneesBancaires> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#ligne-piece.coordonneesBancaires> rdf:type owl:ObjectProperty ;
+    rdfs:label "ligne-piece.coordonneesBancaires" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#LignePiece> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#CoordonneesBancaires> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#ligne-piece.tiers> rdf:type owl:ObjectProperty ;
+    rdfs:label "ligne-piece.tiers" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#LignePiece> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Tiers> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#marche.acheteur> rdf:type owl:ObjectProperty ;
+    rdfs:label "marche.acheteur" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Marche> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Entite> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr ;
+    rdfs:comment "Acheteur public qui a passé le marché."@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#marche.acteSousTraitance> rdf:type owl:ObjectProperty ;
+    rdfs:label "marche.acteSousTraitance" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Marche> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#SousTraitance> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr ;
+    rdfs:comment "Acte de sous-traitance déclaré pour le marché."@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#marche.modification> rdf:type owl:ObjectProperty ;
+    rdfs:label "marche.modification" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Marche> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#ModificationMarche> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr ;
+    rdfs:comment "Modification apportée au marché."@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#marche.modificationActesSousTraitance> rdf:type owl:ObjectProperty ;
+    rdfs:label "marche.modificationActesSousTraitance" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Marche> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#ModificationSousTraitance> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr ;
+    rdfs:comment "Modification d'un acte de sous-traitance du marché."@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#marche.titulaire> rdf:type owl:ObjectProperty ;
+    rdfs:label "marche.titulaire" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Marche> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Entreprise> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr ;
+    rdfs:comment "Entreprise titulaire du marché, y compris par modification."@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#paierie.coordonneesBancaires> rdf:type owl:ObjectProperty ;
+    rdfs:label "paierie.coordonneesBancaires" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Paierie> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#CoordonneesBancaires> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#personne.organisation> rdf:type owl:ObjectProperty ;
+    rdfs:label "personne.organisation" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Personne> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Organisation> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#role-imposition.impot> rdf:type owl:ObjectProperty ;
+    rdfs:label "role-imposition.impot" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#RoleImposition> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Impot> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#sous-traitance.sousTraitant> rdf:type owl:ObjectProperty ;
+    rdfs:label "sous-traitance.sousTraitant" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#SousTraitance> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Entreprise> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr ;
+    rdfs:comment "Entreprise sous-traitante désignée par l'acte de sous-traitance."@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#tiers.entreprise> rdf:type owl:ObjectProperty ;
+    rdfs:label "tiers.entreprise" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Tiers> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Entreprise> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr ;
+    rdfs:comment "Entreprise que désigne le tiers, quand il s'agit d'une personne morale."@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#tiers.personne> rdf:type owl:ObjectProperty ;
+    rdfs:label "tiers.personne" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#Tiers> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Personne> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr ;
+    rdfs:comment "Personne que désigne le tiers, quand il s'agit d'une personne physique."@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#transco-recette.impot> rdf:type owl:ObjectProperty ;
+    rdfs:label "transco-recette.impot" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#TranscoRecette> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#Impot> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#transco-recette.nomenclatureBudgetaire> rdf:type owl:ObjectProperty ;
+    rdfs:label "transco-recette.nomenclatureBudgetaire" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#TranscoRecette> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#NomenclatureBudgetaire> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
+
+<https://w3id.org/pfd-okdp/uns/def#transco-recette.roleImposition> rdf:type owl:ObjectProperty ;
+    rdfs:label "transco-recette.roleImposition" ;
+    rdfs:domain <https://w3id.org/pfd-okdp/uns/def#TranscoRecette> ;
+    rdfs:range <https://w3id.org/pfd-okdp/uns/def#RoleImposition> ;
+    <https://w3id.org/pfd-okdp/uns/def#statut> "proposé"@fr .
 
 <https://w3id.org/pfd-okdp/uns/def#acte.code> rdf:type owl:DatatypeProperty ;
     rdfs:label "acte.code" ;

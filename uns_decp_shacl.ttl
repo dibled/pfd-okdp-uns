@@ -7,13 +7,13 @@
 
 <https://w3id.org/pfd-okdp/uns/shapes> rdf:type owl:Ontology ;
     rdfs:label "Contrôles SHACL du vocabulaire UNS (cas DECP)"@fr ;
-    owl:versionInfo "0.2.0" ;
+    owl:versionInfo "0.3.0" ;
     owl:imports <https://w3id.org/pfd-okdp/uns/def> ;
     dct:creator "Didier Bombled" ;
     dct:publisher "Plateforme PFD-OKDP" ;
     dct:license <https://www.etalab.gouv.fr/licence-ouverte-open-licence/> ;
     dct:created "2026-10-23"^^xsd:date ;
-    dct:modified "2026-10-23"^^xsd:date ;
+    dct:modified "2026-10-24"^^xsd:date ;
     dct:language "fr" .
 
 <https://w3id.org/pfd-okdp/uns/def#MarcheForme> rdf:type sh:NodeShape ;

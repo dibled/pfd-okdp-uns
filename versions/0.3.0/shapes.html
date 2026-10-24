@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contrôles SHACL UNS PFD-OKDP</title>
+<style>
+:root { --fond: #fff; --texte: #1d1d1f; --trait: #d8d8dc; --doux: #f4f4f6; --lien: #0b57d0; }
+@media (prefers-color-scheme: dark) { :root { --fond: #17171a; --texte: #ececf1; --trait: #3a3a40; --doux: #222227; --lien: #8ab4f8; } }
+body { background: var(--fond); color: var(--texte); font-family: system-ui, sans-serif; line-height: 1.5;
+       max-width: 72rem; margin: 2rem auto; padding: 0 1rem; }
+a { color: var(--lien); } code { background: var(--doux); padding: 0 .25rem; }
+table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+th, td { border-bottom: 1px solid var(--trait); padding: .3rem .5rem; text-align: left; vertical-align: top; }
+th { background: var(--doux); position: sticky; top: 0; }
+.niv1 { padding-left: 1rem; } .niv2 { padding-left: 2rem; } .niv3 { padding-left: 3rem; } .niv4 { padding-left: 4rem; }
+</style>
+</head>
+<body>
+<h1>Contrôles SHACL du vocabulaire UNS (cas DECP)</h1>
+<p>Version 0.3.0. Formats : <a href="uns_decp_shacl.ttl">Turtle</a>, <a href="uns_decp_shacl.jsonld">JSON-LD</a>, <a href="uns_decp_shacl.rdf">RDF/XML</a>. <a href="./">Accueil</a>.</p>
+<h2>MarcheForme</h2>
+<p>Classe ciblée : <code>https://w3id.org/pfd-okdp/uns/def#Marche</code></p>
+<table><thead><tr><th>Propriété</th><th>Contrainte</th><th>Message</th></tr></thead><tbody>
+<tr><td><code>marche.montant</code></td><td>minExclusive = 0</td><td>MAR-001 : montant inférieur ou égal à 0</td></tr>
+<tr><td><code>marche.dureeMois</code></td><td>minExclusive = 0</td><td>MAR-002 : durée inférieure ou égale à 0</td></tr>
+<tr><td><code>marche.codeCPV</code></td><td>pattern = ^[0-9]{8}-[0-9]$; minCount = 1</td><td>MAR-004 : code CPV hors format 8 chiffres-clé</td></tr>
+<tr><td><code>entite.identifiant.SIRET</code></td><td>pattern = ^[0-9]{14}$; minCount = 1</td><td>MAR-005 : SIRET acheteur hors format 14 chiffres</td></tr>
+<tr><td>requête SPARQL</td><td><pre>PREFIX uns: &lt;https://w3id.org/pfd-okdp/uns/def#&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+SELECT $this WHERE { $this uns:marche.datePublicationDonnees ?p ; uns:marche.dateNotification ?n .
+                   FILTER (STR(?p) &lt; STR(?n)) }  # dates AAAA-MM-JJ : ordre des textes = ordre des dates</pre></td><td>MAR-003 : publication antérieure à la notification</td></tr>
+<tr><td>requête SPARQL</td><td><pre>PREFIX uns: &lt;https://w3id.org/pfd-okdp/uns/def#&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+SELECT $this WHERE { $this uns:marche.attributionAvance &quot;1&quot; .
+                   OPTIONAL { $this uns:marche.tauxAvance ?t } FILTER (!BOUND(?t) || ?t &lt;= 0) }</pre></td><td>MAR-006 : avance attribuée sans taux positif</td></tr>
+</tbody></table>
+</body>
+</html>
