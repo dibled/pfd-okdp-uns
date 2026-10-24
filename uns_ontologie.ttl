@@ -9,8 +9,8 @@
     rdfs:label "Vocabulaire UNS de la plateforme PFD-OKDP"@fr ;
     dct:title "Vocabulaire UNS de la plateforme PFD-OKDP"@fr ;
     dct:description "Généré depuis opale-meta.uns_vocabulaire et uns_dictionnaire ; espace d URI https://w3id.org/pfd-okdp/uns/ (identifiants permanents w3id)."@fr ;
-    owl:versionInfo "0.3.0" ;
-    owl:versionIRI <https://w3id.org/pfd-okdp/uns/def/0.3.0> ;
+    owl:versionInfo "1.0.0" ;
+    owl:versionIRI <https://w3id.org/pfd-okdp/uns/def/1.0.0> ;
     vann:preferredNamespacePrefix "uns" ;
     vann:preferredNamespaceUri "https://w3id.org/pfd-okdp/uns/def#" ;
     dct:creator "Didier Bombled" ;
